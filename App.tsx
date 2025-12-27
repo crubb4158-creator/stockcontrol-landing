@@ -10,12 +10,12 @@ import { PRICING_PLANS } from './constants';
 const App: React.FC = () => {
   return (
     <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-slate-950 text-white font-sans selection:bg-primary/30 selection:text-primary">
-      {/* Ambient Background Effects */}
+      {/* Ambient Background Effects - Optimized for performance */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[120px] animate-blob mix-blend-screen"></div>
-        <div className="absolute top-[20%] -right-[10%] w-[40%] h-[40%] rounded-full bg-accent/5 blur-[120px] animate-blob animation-delay-2000 mix-blend-screen"></div>
-        <div className="absolute -bottom-[10%] left-[20%] w-[60%] h-[40%] rounded-full bg-blue-600/5 blur-[120px] animate-blob animation-delay-4000 mix-blend-screen"></div>
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
+        {/* Static gradient - no blur, no animations for better performance */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-slate-950 to-accent/10"></div>
+        <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-cyan-500/5 to-transparent"></div>
+        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-indigo-500/5 to-transparent"></div>
       </div>
 
       <Navbar />

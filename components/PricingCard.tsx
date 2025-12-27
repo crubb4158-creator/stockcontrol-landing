@@ -11,8 +11,8 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
 
   // Modern card container styles with heavy rounded corners
   const cardClasses = isRecommended
-    ? "relative flex flex-col h-full rounded-[40px] bg-slate-900/60 border border-primary/30 p-8 backdrop-blur-md shadow-2xl shadow-primary/10 transition-transform duration-300 hover:scale-[1.02] lg:-mt-8 lg:mb-4"
-    : "relative flex flex-col h-full rounded-[40px] bg-slate-900/40 border border-white/5 p-8 backdrop-blur-md hover:bg-slate-900/60 transition-all duration-300 hover:border-white/10";
+    ? "relative flex flex-col h-full rounded-[40px] bg-slate-900/90 border border-primary/30 p-8 shadow-2xl shadow-primary/10 transition-transform duration-300 hover:scale-[1.02] lg:-mt-8 lg:mb-4"
+    : "relative flex flex-col h-full rounded-[40px] bg-slate-900/80 border border-white/5 p-8 hover:bg-slate-900/90 transition-all duration-300 hover:border-white/10";
 
   // Pill-shaped button styles
   const getButtonClasses = () => {
@@ -66,11 +66,10 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
       <div className="flex-1 space-y-4 mb-8">
         {plan.features.map((feature, idx) => (
           <div key={idx} className="flex items-start gap-3">
-            <div className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full ${
-              feature.included 
-                ? isRecommended ? 'bg-primary text-slate-950' : 'bg-white/10 text-primary' 
+            <div className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full ${feature.included
+                ? isRecommended ? 'bg-primary text-slate-950' : 'bg-white/10 text-primary'
                 : 'bg-transparent text-slate-700'
-            }`}>
+              }`}>
               {feature.included ? (
                 <Check className="h-3 w-3 stroke-[3]" />
               ) : (
@@ -90,11 +89,11 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
       <button className={getButtonClasses()}>
         {plan.buttonText}
       </button>
-      
+
       {isRecommended && (
-         <p className="mt-4 text-center text-[10px] font-medium uppercase tracking-widest text-primary/60">
-           Pago Único • Sin Cuotas
-         </p>
+        <p className="mt-4 text-center text-[10px] font-medium uppercase tracking-widest text-primary/60">
+          Pago Único • Sin Cuotas
+        </p>
       )}
     </div>
   );
