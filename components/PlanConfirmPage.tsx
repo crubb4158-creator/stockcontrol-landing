@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ArrowRight, Check, Sparkles, Crown, Zap, Shield, Clock, MessageCircle, Users, TrendingUp, Star, Rocket, Gift } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Sparkles, Crown, Zap, Shield, Clock, MessageCircle, Users, TrendingUp, Star, Rocket, Gift, Calendar, Settings, GraduationCap, PartyPopper } from 'lucide-react';
 import { PricingPlan } from '../types';
 
 interface PlanConfirmPageProps {
@@ -78,11 +78,11 @@ const planDetails: { [key: string]: { benefits: BenefitItem[], message: string, 
 };
 
 const steps = [
-    { num: '01', title: 'Contactanos', desc: 'Escribinos por WhatsApp' },
-    { num: '02', title: 'Coordinamos', desc: 'Agendamos la instalación' },
-    { num: '03', title: 'Configuramos', desc: 'Adaptamos a tu negocio' },
-    { num: '04', title: 'Capacitación', desc: 'Te enseñamos todo' },
-    { num: '05', title: '¡A vender!', desc: 'Empezás a facturar' }
+    { num: '01', title: 'Contactanos', desc: 'Escribinos por WhatsApp', icon: <MessageCircle size={18} /> },
+    { num: '02', title: 'Coordinamos', desc: 'Agendamos la instalación', icon: <Calendar size={18} /> },
+    { num: '03', title: 'Configuramos', desc: 'Adaptamos a tu negocio', icon: <Settings size={18} /> },
+    { num: '04', title: 'Capacitación', desc: 'Te enseñamos todo', icon: <GraduationCap size={18} /> },
+    { num: '05', title: '¡A vender!', desc: 'Empezás a facturar', icon: <PartyPopper size={18} /> }
 ];
 
 const PlanConfirmPage: React.FC<PlanConfirmPageProps> = ({ plan, onBack }) => {
@@ -218,8 +218,8 @@ const PlanConfirmPage: React.FC<PlanConfirmPageProps> = ({ plan, onBack }) => {
                                     className="relative group"
                                 >
                                     <div className="text-center">
-                                        <div className={`mx-auto w-12 h-12 rounded-xl bg-gradient-to-br ${details.accentColor} opacity-10 group-hover:opacity-20 flex items-center justify-center mb-3 transition-opacity`}>
-                                            <span className={`text-lg font-bold bg-gradient-to-r ${details.accentColor} bg-clip-text text-transparent`}>{step.num}</span>
+                                        <div className={`mx-auto w-12 h-12 rounded-xl bg-gradient-to-br ${details.accentColor} flex items-center justify-center mb-3 transition-all group-hover:scale-110`}>
+                                            <span className="text-slate-900">{step.icon}</span>
                                         </div>
                                         <p className="text-sm font-semibold text-white mb-1">{step.title}</p>
                                         <p className="text-xs text-slate-500">{step.desc}</p>
