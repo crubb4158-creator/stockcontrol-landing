@@ -88,6 +88,11 @@ const steps = [
 const PlanConfirmPage: React.FC<PlanConfirmPageProps> = ({ plan, onBack }) => {
     const details = planDetails[plan.id] || planDetails.emprendedor;
 
+    // Scroll al top cuando se carga la página
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const whatsappLink = `https://wa.me/5950983338958?text=${encodeURIComponent(details.message)}`;
 
     return (
