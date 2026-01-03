@@ -97,7 +97,7 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-      <nav className="flex h-11 w-full max-w-4xl items-center justify-between rounded-full border border-white/10 bg-slate-950/60 px-4 backdrop-blur-xl shadow-2xl shadow-black/20">
+      <nav className="flex h-11 w-full max-w-4xl items-center justify-between rounded-full border border-white/10 bg-slate-950/95 px-4 shadow-2xl shadow-black/20">
         {/* Logo */}
         <div className="flex items-center gap-1.5">
           <div className="flex size-7 items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-primary/20">
@@ -164,7 +164,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-2 mx-auto w-full max-w-4xl rounded-2xl border border-white/10 bg-slate-950/95 backdrop-blur-xl p-3 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden mt-2 mx-auto w-full max-w-4xl rounded-2xl border border-white/10 bg-slate-950 p-3 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col gap-1">
             {navItems.map((item) => (
               <a
@@ -172,8 +172,8 @@ const Navbar: React.FC = () => {
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
                 className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${activeNav === item.id
-                    ? 'bg-white/10 text-white'
-                    : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                  ? 'bg-white/10 text-white'
+                  : 'text-slate-400 hover:bg-white/5 hover:text-white'
                   }`}
               >
                 {item.label}

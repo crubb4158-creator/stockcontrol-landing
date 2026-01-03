@@ -8,16 +8,15 @@ const Hero: React.FC = () => {
         {/* Badges Stack */}
         <div className="flex flex-col items-center gap-2 mb-4 sm:mb-5 lg:mb-6">
           {/* Speed Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold text-green-400 backdrop-blur-sm animate-pulse">
+          <div className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold text-green-400">
             <Zap className="h-3 w-3 sm:h-4 sm:w-4 fill-green-400 text-green-400" />
             <span>Así de rápido carga este sitio, así de rápido es el sistema</span>
             <Zap className="h-3 w-3 sm:h-4 sm:w-4 fill-green-400 text-green-400" />
           </div>
 
           {/* Paraguay Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium text-primary backdrop-blur-sm transition-colors hover:bg-primary/10">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium text-primary transition-colors hover:bg-primary/10">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
             </span>
             Software 100% Paraguayo

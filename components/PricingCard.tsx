@@ -1,5 +1,6 @@
 import React from 'react';
-import { Check, X, Sparkles, Info, ArrowLeftRight } from 'lucide-react';
+import { Check, X, Sparkles, Info, ArrowLeftRight, Clock } from 'lucide-react';
+import { FlagPY, FlagBR } from './FlagIcons';
 import { PricingPlan } from '../types';
 
 interface PricingCardProps {
@@ -60,9 +61,9 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, onShowDetails, onSelect
       {plan.pix?.enabled && (
         <div className="mb-3 p-2 rounded-lg bg-green-500/10 border border-green-500/20">
           <div className="flex items-center justify-center gap-2 mb-1">
-            <img src="/flag-py.png" alt="Paraguay" className="h-4 w-4 rounded-full object-cover" />
+            <FlagPY className="h-4 w-4" />
             <ArrowLeftRight className="h-3 w-3 text-green-400" />
-            <img src="/flag-br.png" alt="Brasil" className="h-4 w-4 rounded-full object-cover" />
+            <FlagBR className="h-4 w-4" />
           </div>
           <p className="text-[9px] text-center text-green-400 font-bold">
             PIX: {plan.pix.commission} comisión
@@ -86,11 +87,21 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, onShowDetails, onSelect
                 <X className="h-2.5 w-2.5" />
               )}
             </div>
-            <span className={`text-[10px] leading-tight ${!feature.included && 'text-slate-600 line-through'}`}>
-              <span className={feature.included ? 'text-slate-300' : 'text-slate-600'}>
-                {feature.text}
+            <div className="flex flex-col gap-0.5">
+              <span className={`text-[10px] leading-tight ${!feature.included && 'text-slate-600 line-through'}`}>
+                <span className={feature.included ? 'text-slate-300' : 'text-slate-600'}>
+                  {feature.text}
+                </span>
               </span>
-            </span>
+              {feature.isLimitedTime && (
+                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/30 w-fit transition-all hover:bg-amber-500/30">
+                  <Clock className="h-2 w-2 text-amber-400" />
+                  <span className="text-[7px] font-bold text-amber-400 uppercase tracking-wide">
+                    Por Tiempo Limitado
+                  </span>
+                </span>
+              )}
+            </div>
           </div>
         ))}
         {plan.features.length > 3 && (

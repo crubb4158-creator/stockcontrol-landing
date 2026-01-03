@@ -10,7 +10,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     features: [
       { text: 'Hasta 2 Usuarios', included: true },
       { text: 'POS + Caja + Inventario', included: true },
-      { text: 'Instalación Gratuita', included: true },
+      { text: 'Instalación Gratuita', included: true, isLimitedTime: true },
       { text: 'Soporte Prioritario en Sistema', included: true },
       { text: 'Multi-Moneda (Gs, USD, BRL)', included: true },
     ],
@@ -56,7 +56,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     features: [
       { text: 'Hasta 4 Usuarios', included: true },
       { text: 'Todo lo del Plan Emprendedor', included: true },
-      { text: 'Instalación Gratuita', included: true },
+      { text: 'Instalación Gratuita', included: true, isLimitedTime: true },
       { text: 'Reportes Avanzados', included: true },
       { text: 'Gestión de RRHH', included: true },
     ],

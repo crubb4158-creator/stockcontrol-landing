@@ -1,6 +1,7 @@
 export interface PlanFeature {
   text: string;
   included: boolean;
+  isLimitedTime?: boolean;
 }
 
 export interface PixInfo {

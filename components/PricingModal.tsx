@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { X, Check, Sparkles, ArrowLeftRight } from 'lucide-react';
+import { X, Check, Sparkles, ArrowLeftRight, Clock } from 'lucide-react';
+import { FlagPY, FlagBR } from './FlagIcons';
 import { PricingPlan } from '../types';
 
 interface PricingModalProps {
@@ -31,57 +32,58 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose, plan }) =>
                 return {
                     ideal: 'Kioscos, pequeños comercios, emprendedores que inician',
                     includes: [
-                        'Punto de Venta completo',
-                        'Control de Caja con arqueo',
-                        'Inventario básico con alertas',
-                        'Hasta 2 usuarios simultáneos',
-                        'Soporte prioritario',
-                        'Multi-moneda',
-                        'Instalación gratuita'
+                        { text: 'Punto de Venta completo', limitedTime: false },
+                        { text: 'Control de Caja con arqueo', limitedTime: false },
+                        { text: 'Inventario básico con alertas', limitedTime: false },
+                        { text: 'Hasta 2 usuarios simultáneos', limitedTime: false },
+                        { text: 'Soporte prioritario', limitedTime: false },
+                        { text: 'Multi-moneda', limitedTime: false },
+                        { text: 'Instalación gratuita', limitedTime: true }
                     ]
                 };
             case 'pro':
                 return {
                     ideal: 'Tiendas medianas, boutiques, farmacias',
                     includes: [
-                        'Todo lo del Plan Emprendedor',
-                        'Hasta 4 usuarios',
-                        'Gestión de RRHH',
-                        'Comisiones y metas',
-                        'Reportes avanzados',
-                        'Control de proveedores',
-                        'Historial de clientes'
+                        { text: 'Todo lo del Plan Emprendedor', limitedTime: false },
+                        { text: 'Hasta 4 usuarios', limitedTime: false },
+                        { text: 'Gestión de RRHH', limitedTime: false },
+                        { text: 'Comisiones y metas', limitedTime: false },
+                        { text: 'Reportes avanzados', limitedTime: false },
+                        { text: 'Control de proveedores', limitedTime: false },
+                        { text: 'Historial de clientes', limitedTime: false },
+                        { text: 'Instalación gratuita', limitedTime: true }
                     ]
                 };
             case 'lifetime':
                 return {
                     ideal: 'Empresas que quieren invertir una vez',
                     includes: [
-                        'Hasta 10 usuarios',
-                        'Instalación presencial/virtual',
-                        'Acceso de por vida',
-                        'Actualizaciones gratis',
-                        'Facturación Electrónica',
-                        'Soporte VIP',
-                        'Capacitación completa',
-                        'Migración de datos'
+                        { text: 'Hasta 10 usuarios', limitedTime: false },
+                        { text: 'Instalación presencial/virtual', limitedTime: false },
+                        { text: 'Acceso de por vida', limitedTime: false },
+                        { text: 'Actualizaciones gratis', limitedTime: false },
+                        { text: 'Facturación Electrónica', limitedTime: false },
+                        { text: 'Soporte VIP', limitedTime: false },
+                        { text: 'Capacitación completa', limitedTime: false },
+                        { text: 'Migración de datos', limitedTime: false }
                     ]
                 };
             case 'creditos':
                 return {
                     ideal: 'Distribuidores que quieren ganar dinero',
                     includes: [
-                        '3 créditos para cuentas',
-                        'Cuentas completas',
-                        'Define tu precio',
-                        'Ganancia +500k/cuenta',
-                        'Soporte para tu red',
-                        'Material de ventas',
-                        'Comisiones renovación'
+                        { text: '3 créditos para cuentas', limitedTime: false },
+                        { text: 'Cuentas completas', limitedTime: false },
+                        { text: 'Define tu precio', limitedTime: false },
+                        { text: 'Ganancia +500k/cuenta', limitedTime: false },
+                        { text: 'Soporte para tu red', limitedTime: false },
+                        { text: 'Material de ventas', limitedTime: false },
+                        { text: 'Comisiones renovación', limitedTime: false }
                     ]
                 };
             default:
-                return { ideal: '', includes: [] };
+                return { ideal: '', includes: [] as { text: string; limitedTime: boolean }[] };
         }
     };
 
@@ -134,9 +136,9 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose, plan }) =>
                         {plan.pix?.enabled && (
                             <div className="p-2 rounded-lg bg-green-500/10 border border-green-500/20">
                                 <div className="flex items-center gap-2 mb-1">
-                                    <img src="/flag-py.png" alt="PY" className="h-4 w-4 rounded-full" />
+                                    <FlagPY className="h-4 w-4" />
                                     <ArrowLeftRight className="h-3 w-3 text-green-400" />
-                                    <img src="/flag-br.png" alt="BR" className="h-4 w-4 rounded-full" />
+                                    <FlagBR className="h-4 w-4" />
                                     <span className="text-xs font-bold text-green-400">{plan.pix.commission}</span>
                                 </div>
                                 <p className="text-[9px] text-slate-400">Mín: {plan.pix.minAmount}</p>
@@ -148,11 +150,21 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose, plan }) =>
                     <div className="md:w-2/3 p-5">
                         <div className="grid grid-cols-2 gap-x-4 gap-y-2 mb-4">
                             {details.includes.map((item, idx) => (
-                                <div key={idx} className="flex items-center gap-2">
+                                <div key={idx} className="flex items-start gap-2">
                                     <div className={`flex size-4 shrink-0 items-center justify-center rounded-full ${plan.isRecommended ? 'bg-primary text-slate-950' : 'bg-white/10 text-primary'}`}>
                                         <Check className="h-2.5 w-2.5 stroke-[3]" />
                                     </div>
-                                    <span className="text-xs text-slate-300">{item}</span>
+                                    <div className="flex flex-col gap-0.5">
+                                        <span className="text-xs text-slate-300">{item.text}</span>
+                                        {item.limitedTime && (
+                                            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/30 w-fit animate-pulse">
+                                                <Clock className="h-2 w-2 text-amber-400" />
+                                                <span className="text-[7px] font-bold text-amber-400 uppercase tracking-wide">
+                                                    Por Tiempo Limitado
+                                                </span>
+                                            </span>
+                                        )}
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -163,7 +175,7 @@ const PricingModal: React.FC<PricingModalProps> = ({ isOpen, onClose, plan }) =>
                                 <p className="text-xs font-semibold text-green-400 mb-2">Servicio PIX incluido</p>
                                 <div className="grid grid-cols-2 gap-2 text-[10px] text-slate-400">
                                     <div>• Enviar Gs. → Recibir R$</div>
-                                    <div>• Recibir R$ → Recibir Gs.</div>
+                                    <div>• Enviar R$ → Recibir Gs.</div>
                                     <div>• Tiempo: 15-20 minutos</div>
                                     <div>• Cotización en tiempo real</div>
                                 </div>
